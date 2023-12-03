@@ -1,0 +1,27 @@
+file_mapper is a library to map files into memory.
+
+Because I'm too lazy to recode it everytime I need it, it is now on GitHub.
+
+Usage:
+    Give a filename to file_mapper(const char *) and get a struct file;
+    
+    The content of the file is in file->content as a pointer to void.
+    Implicitly cast it into whatever you want.
+
+    Because I'm nice, the struct also has the file descriptor, size in bytes and
+    filename of the file to use it for whatever reason.
+
+    Give the address of your struct to file_unmapper(struct file *) to free all
+        the used memory and put the struct address to NULL to avoid an 
+        use-after-free.
+
+Makefile usage:
+    You can generate an object file, a static library and a shared library.
+
+    * make: Generate all the kinds.
+
+    * make clean: Delete all the generated files.
+
+    * make [obj|static|shared]: Generate a kind of library.
+
+    * make file_mapper.[o|a|so]: Generate a kind of library.
